@@ -10,13 +10,24 @@ export const InfoBlock = (props) => {
           <Text style={{color: "#ffffff", ...styles.nomargins}}>{props.title}</Text>
         </View>
         <View>
-          <PieChart title="Student Body Breakdown by Gender"
+          <PieChart
             backgroundColor="transparent"
             data={[
-              ["Gender", "Percentage of Student Body"],
-              ["Male", 40],
-              ["Female", 50],
-              ["Other", 10],
+              {
+                name:"Male",
+                value:40,
+                color:"#8ce0ed"
+              },
+              {
+                name:"Female",
+                value:50,
+                color:"#ffd1fb"
+              },
+              {
+                name:"Other",
+                value:10,
+                color:"#bdffbd"
+              },
             ]}
           />
         </View>

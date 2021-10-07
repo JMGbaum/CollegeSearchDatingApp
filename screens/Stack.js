@@ -1,12 +1,12 @@
 import {InfoCard, ProfileCard} from "../components/";
 import React from "react";
-import { View } from "react-native";
+import { Dimensions, ScrollView } from "react-native";
 
 export const Stack = () => {
     return (
-       <View>
+       <ScrollView style={{height: Dimensions.get("window").height - 20}}>
          <ProfileCard title="EXAMPLE COLLEGE"/>
          <InfoCard title="EXAMPLE COLLEGE"/>
-       </View>
+       </ScrollView>
     )
 }

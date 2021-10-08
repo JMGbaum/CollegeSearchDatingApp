@@ -1,26 +1,28 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 
 export const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      backgroundColor: '#fff',
+      backgroundColor: '#000',
       alignItems: 'center',
       justifyContent: 'center',
     },
     profilecard: {
-      backgroundImage: "linear-gradient(to top right, #ff472f, #ff775f, #ff876f, #ff775f, #ff472f)",
-      border: "3px solid #ff9f7f",
+      borderWidth: 3,
+      borderStyle: "solid",
+      borderColor: "#ff9f7f",
       borderRadius: 100,
-      padding: "50px",
+      padding: 50,
+      height: Dimensions.get("window").height - 82,
+      width: Dimensions.get("window").width,
     },
     profileblock: {
       textAlign: "center",
       backgroundColor: "#ff9f7f",
       borderRadius: 100,
       color: "#fff",
-      padding: "5px",
+      padding: 5,
       fontFamily: "verdana",
-      fontSize: "50px",
+      fontSize: 50,
     },
     center: {
       display: "flex",
@@ -30,28 +32,33 @@ export const styles = StyleSheet.create({
     piechart: {
       display: "flex",
       margin: "auto",
-      paddingTop: "25px",
+      paddingTop: 25,
     },
     infocard: {
-      backgroundImage: "linear-gradient(to top right, #717171, #919191, #a1a1a1, #919191, #717171)",
-      border: "3px solid #b1b1b1",
+      borderWidth: 3,
+      borderStyle: "solid",
+      borderColor: "#b1b1b1",
       borderRadius: 100,
-      padding: "50px",
+      padding: 50,
     },
     infoblock: {
       textAlign: "center",
       backgroundColor: "#b1b1b1",
       borderRadius: 100,
       color: "#fff",
-      padding: "5px",
+      padding: 5,
       fontFamily: "verdana",
       fontSize: 50,
     },
     nomargins: {
-      margin: "0px",
+      margin: 0,
     },
     navbar: {
+      width: Dimensions.get("window").width,
+      height: 50,
+      backgroundColor: "#b1b1b1",
       display: "flex",
       flexDirection: "row",
+      justifyContent: "center"
     },
 });

@@ -1,7 +1,7 @@
 import { styles } from "../Styles";
 import React from "react";
 import { View } from "react-native";
-import { ProfileBlock } from ".";
+import { ProfileBlock } from "./ProfileBlock";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const ProfileCard = (props) => {

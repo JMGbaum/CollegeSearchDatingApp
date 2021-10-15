@@ -9,8 +9,7 @@ export default function App() {
     <View style={{flex:1, backgroundColor:"#000000"}}>
       <SafeAreaView style={styles.container}>
         <View>
-          <Stack />
-          <StatusBar style="auto" />
+          <Stack/>
         </View>
         <View style={styles.navbar}>
           <Button id="likes" title="Likes"></Button>

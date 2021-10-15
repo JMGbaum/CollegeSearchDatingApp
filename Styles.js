@@ -55,10 +55,11 @@ export const styles = StyleSheet.create({
     },
     navbar: {
       width: Dimensions.get("window").width,
-      height: 50,
+      height: "25%",
       backgroundColor: "#b1b1b1",
       display: "flex",
       flexDirection: "row",
-      justifyContent: "center"
+      justifyContent: "center",
+      top:"175%",
     },
 });

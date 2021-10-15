@@ -1,5 +1,7 @@
 import { StyleSheet, Dimensions } from "react-native";
 
+export const FONT = "Verdana";
+
 export const styles = StyleSheet.create({
     container: {
       backgroundColor: '#000',
@@ -21,7 +23,7 @@ export const styles = StyleSheet.create({
       borderRadius: 100,
       color: "#fff",
       padding: 5,
-      fontFamily: "verdana",
+      fontFamily: FONT,
       fontSize: 50,
     },
     center: {
@@ -47,7 +49,7 @@ export const styles = StyleSheet.create({
       borderRadius: 100,
       color: "#fff",
       padding: 5,
-      fontFamily: "verdana",
+      fontFamily: FONT,
       fontSize: 50,
     },
     nomargins: {
@@ -61,5 +63,6 @@ export const styles = StyleSheet.create({
       flexDirection: "row",
       justifyContent: "center",
       top:"175%",
+      zIndex: 10,
     },
 });

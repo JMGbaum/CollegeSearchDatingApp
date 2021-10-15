@@ -1,5 +1,8 @@
 import { StyleSheet, Dimensions } from "react-native";
 
+const SCREEN_HEIGHT = Dimensions.get("window").height;
+const SCREEN_WIDTH = Dimensions.get("window").width;
+
 export const FONT = "Verdana";
 
 export const styles = StyleSheet.create({
@@ -14,8 +17,8 @@ export const styles = StyleSheet.create({
       borderColor: "#ff9f7f",
       borderRadius: 100,
       padding: 50,
-      height: Dimensions.get("window").height - 82,
-      width: Dimensions.get("window").width,
+      height: SCREEN_HEIGHT*0.925-48,//Dimensions.get("window").height - 82,
+      //width: SCREEN_WIDTH,//Dimensions.get("window").width,
     },
     profileblock: {
       textAlign: "center",
@@ -52,17 +55,22 @@ export const styles = StyleSheet.create({
       fontFamily: FONT,
       fontSize: 50,
     },
+    card: {
+      //height: SCREEN_HEIGHT-78,
+      //position:"absolute",
+      //alignSelf:"center",
+    },
     nomargins: {
       margin: 0,
     },
     navbar: {
-      width: Dimensions.get("window").width,
-      height: "25%",
+      width: SCREEN_WIDTH,
+      height: SCREEN_HEIGHT*0.075,
       backgroundColor: "#b1b1b1",
-      display: "flex",
       flexDirection: "row",
       justifyContent: "center",
-      top:"175%",
+      top: SCREEN_HEIGHT*0.925,
       zIndex: 10,
+      position:"absolute",
     },
 });

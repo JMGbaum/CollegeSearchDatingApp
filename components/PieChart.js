@@ -1,7 +1,7 @@
 import {PieChart as PC} from "react-native-chart-kit";
-import { styles } from "../Styles";
+import { SCREEN_WIDTH, FONT, styles } from "../Styles";
 import React from "react";
-import { View } from "react-native";
+import { View, Text } from "react-native";
 
 const chartConfig = {
   /*backgroundGradientFrom: "#1E2923",
@@ -17,8 +17,15 @@ const chartConfig = {
 export const PieChart = (props) => {
     return (
       <View style={styles.piechart}>
+        <Text style={{alignSelf:"center", color:"#fff", fontFamily: FONT, fontSize: 14}}>{props.data.title}</Text>
         <PC
-          data={props.data}
+          data={props.data.data.map(e => {
+            return {
+              ...e,
+              legendFontColor: "#000",
+              legendFontSize: "#000",
+            }
+          })}
           accessor={"value"}
           backgroundColor={props.backgroundColor ? props.backgroundColor : "#ffffff"}
           style={{margin: "auto"}}
@@ -28,8 +35,8 @@ export const PieChart = (props) => {
             backgroundGradientTo: '#ffffff',
             color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`
           }}
-          height={50}
-          width={50}
+          height={100}
+          width={SCREEN_WIDTH*0.6}
           />
       </View>
     )

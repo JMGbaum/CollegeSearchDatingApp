@@ -1,7 +1,6 @@
 import { InfoBlock } from "./InfoBlock.js";
 import React from "react";
-import { View } from "react-native";
-import { styles } from "../Styles";
+import { View, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 export const InfoCard = (props) => {
@@ -13,3 +12,13 @@ export const InfoCard = (props) => {
       </View>
     )
 }
+
+const styles = StyleSheet.create({
+  infocard: {
+    borderWidth: 3,
+    borderStyle: "solid",
+    borderColor: "#b1b1b1",
+    borderRadius: 100,
+    padding: 50,
+  },
+});

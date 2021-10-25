@@ -1,6 +1,5 @@
-import { Button, View } from "react-native";
+import { Button, View, Dimensions, StyleSheet } from "react-native";
 import React from "react";
-import { styles } from "../Styles";
 
 export const NavBar = (props) => {
     return (
@@ -11,3 +10,17 @@ export const NavBar = (props) => {
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+  navbar: {
+    width: Dimensions.get("screen").width,
+    height: Dimensions.get("screen").height*0.1,
+    backgroundColor: "#b1b1b1",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems:"center",
+    top: Dimensions.get("screen").height*0.9,
+    zIndex: 10,
+    position:"absolute",
+  },
+});

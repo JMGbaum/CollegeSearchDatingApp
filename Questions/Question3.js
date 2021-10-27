@@ -1,12 +1,77 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet } from 'react-native';
+import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import { Formik, Field, Form } from 'formik';
 
 //start time: 8:20-9:20, 9:00-9:33
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+import { Checkbox } from './checkbox2';
 
+import Fifty_states from '../screens/States_dropdown';
+
+
+
+//add drop down 
+
+export const Q3 = (props) => {
+  return (
+    <SafeAreaView>
+      <Text> Where would you like for the school to be located (in USA): </Text>
+        <Formik
+          initialValues={{
+              east: false,
+              mid: false,
+              west: false,
+
+          }}
+          onSubmit={(values, { resetForm }) => {
+              console.log(values);
+          }}
+      >
+          {({
+              handleChange,
+              handleSubmit,
+              values,
+              setFieldValue
+          }) => (
+              <View>
+                  <Checkbox 
+                      name={"east"}
+                      isChecked={values?.east}
+                      setFieldValue={setFieldValue}
+                  >
+                      East Coast
+                  </Checkbox>
+                  <Checkbox 
+                      name={"mid"}
+                      isChecked={values?.mid}
+                      setFieldValue={setFieldValue}
+                  >
+                      Midwest 
+                  </Checkbox>
+                  <Checkbox 
+                      name={"west"}
+                      isChecked={values?.west}
+                      setFieldValue={setFieldValue}
+                  >
+                      West Coast
+                  </Checkbox>
+                  <Fifty_states/> 
+                    
+                
+                  
+                  <Button onPress={handleSubmit} title="Submit"></Button>
+              </View>
+          )}
+      </Formik>
+    </SafeAreaView>
+    
+      
+  )
+}
+
+/*
 const QuestionText = (props) => {
   return(
     <View>
@@ -14,7 +79,7 @@ const QuestionText = (props) => {
     </View>
   );
 }
-export function Checkbox(props) {
+export function Q3(props) {
   return(
     <SafeAreaView style={styles.container}>
     <QuestionText
@@ -23,7 +88,7 @@ export function Checkbox(props) {
     initialValues={{ answered: [] }}
     onSubmit={async (values) => {
       await sleep(500);
-      alert(JSON.stringify(values, null, 2));
+      JSON.stringify(values, null, 2);
     }}
     >
     
@@ -45,6 +110,7 @@ export function Checkbox(props) {
         </label>
         <label htmlFor="state">Specific State: </label>
         <Field id="stateName" name="stateName" placeholder="Maryland" />
+        <View>Answered: {values.answered}</View>
       </View>
     <button type="submit">Submit</button>
     
@@ -65,4 +131,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Checkbox;
+*/
+export default Q3;

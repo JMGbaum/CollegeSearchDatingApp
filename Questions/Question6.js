@@ -1,11 +1,53 @@
+// Formik x React Native example
 import React from 'react';
-import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import { Formik, Field, Form } from 'formik';
 
-
+//start time: 8:20-9:20, 9:00-9:33
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+import { Checkbox } from './checkbox2';
 
+
+//add drop down 
+
+export const Q6 = (props) => {
+  return (
+    <SafeAreaView>
+      <Text>Are you looking for a specific program or major? </Text>
+      <Text>Example: BFA programs, Conservatories, Schools with Pre-med</Text>
+        <Formik
+          initialValues={{
+              program: false,
+          }}
+          onSubmit={(values, { resetForm }) => {
+              console.log(values);
+          }}
+      >
+          {({
+              handleChange,
+              handleSubmit,
+              values,
+              setFieldValue
+          }) => (
+              <View>
+                  <Checkbox 
+                      name={"program"}
+                      isChecked={values?.program}
+                      setFieldValue={setFieldValue}
+                  >
+                      Click for Specific Program
+                  </Checkbox>
+                  <Button onPress={handleSubmit} title="Submit"></Button>
+              </View>
+          )}
+      </Formik>
+    </SafeAreaView>
+    
+      
+  )
+}
+/*
 const QuestionText = (props) => {
   return(
     <View>
@@ -13,7 +55,7 @@ const QuestionText = (props) => {
     </View>
   );
 }
-export function Checkbox(props) {
+export function Q6(props) {
   return(
     <SafeAreaView style={styles.container}>
     <QuestionText
@@ -60,4 +102,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Checkbox;
+*/
+
+export default Q6;

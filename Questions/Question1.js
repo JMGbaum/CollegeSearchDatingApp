@@ -1,30 +1,78 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet } from 'react-native';
+import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import { Formik, Field, Form } from 'formik';
 
 //start time: 8:20-9:20, 9:00-9:33
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+import { Checkbox } from './checkbox2';
 
+
+export const Q1 = (props) => {
+  return (
+    <SafeAreaView>
+      <Text> 2 or 4 year school</Text>
+        <Formik
+          initialValues={{
+              two_year: false,
+              four_year: false,
+          }}
+          onSubmit={(values, { resetForm }) => {
+              console.log(values);
+          }}
+      >
+          {({
+              handleChange,
+              handleSubmit,
+              values,
+              setFieldValue
+          }) => (
+              <View>
+                  <Checkbox 
+                      name={"two_year"}
+                      isChecked={values?.two_year}
+                      setFieldValue={setFieldValue}
+                  >
+                      2 year school
+                  </Checkbox>
+                  <Checkbox 
+                      name={"four_year"}
+                      isChecked={values?.four_year}
+                      setFieldValue={setFieldValue}
+                  >
+                      4 year school
+                  </Checkbox>
+                  <Button onPress={handleSubmit} title="Submit"></Button>
+              </View>
+          )}
+
+      </Formik>
+    </SafeAreaView>
+    
+      
+  )
+}
+
+
+/*
 const QuestionText = (props) => {
   return(
     <View>
-      <h1> {props.question} </h1>
+      <Text> {props.question} </Text>
     </View>
   );
 }
-export function Checkbox(props) {
+export function Q1(props) {
   return(
     <SafeAreaView style={styles.container}>
     <QuestionText
-      question = "Would you like a 2 year or 4 year school?"/>
+      question = "2 or 4 Year School"/>
     <Formik
     initialValues={{ answered: [] }}
     onSubmit={async (values) => {
       await sleep(500);
-      JSON.stringify(values, null, 2);
-      
+      alert(JSON.stringify(values, null, 2));
     }}
     >
     
@@ -33,15 +81,16 @@ export function Checkbox(props) {
         <View id="checkbox-group"> </View>
         <View role="group" aria-labelledby="checkbox-group">
         <label>
-          <Field type="checkbox" name="answered" value="Two" />
+          <Field type="checkbox" name="answered" value="2" />
           Two
         </label>
         <label>
-          <Field type="checkbox" name="answered" value="Four" />
-          Four
+          <Field type="checkbox" name="answered" value="4" />
+         Four
         </label>
+        <View>Answered: {values.answered}</View>
       </View>
-    <button type="submit">Submit</button>
+    <button onPress={handleSubmit} title="Submit"/>
     
   </Form>
   )}
@@ -60,4 +109,5 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Checkbox;
+*/
+export default Q1;

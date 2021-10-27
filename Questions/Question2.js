@@ -1,12 +1,66 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet } from 'react-native';
+import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import { Formik, Field, Form } from 'formik';
 
-//start time: 8:20-9:20, 9:00-9:33
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
+import { Checkbox } from './checkbox2';
 
+
+export const Q2 = (props) => {
+  return (
+    <SafeAreaView>
+      <Text> Prefered Student Body Size: </Text>
+        <Formik
+          initialValues={{
+              small: false,
+              medium: false,
+              large: false,
+          }}
+          onSubmit={(values, { resetForm }) => {
+              console.log(values);
+          }}
+      >
+          {({
+              handleChange,
+              handleSubmit,
+              values,
+              setFieldValue
+          }) => (
+              <View>
+                  <Checkbox 
+                      name={"small"}
+                      isChecked={values?.small}
+                      setFieldValue={setFieldValue}
+                  >
+                      Less than 5000 students
+                  </Checkbox>
+                  <Checkbox 
+                      name={"medium"}
+                      isChecked={values?.medium}
+                      setFieldValue={setFieldValue}
+                  >
+                      Between 5000 and 15,000 
+                  </Checkbox>
+                  <Checkbox 
+                      name={"large"}
+                      isChecked={values?.large}
+                      setFieldValue={setFieldValue}
+                  >
+                      Greater than 15,000 
+                  </Checkbox>
+                  <Button onPress={handleSubmit} title="Submit"></Button>
+              </View>
+          )}
+
+      </Formik>
+    </SafeAreaView>
+    
+      
+  )
+}
+/*
 const QuestionText = (props) => {
   return(
     <View>
@@ -14,7 +68,7 @@ const QuestionText = (props) => {
     </View>
   );
 }
-export function Checkbox(props) {
+export function Q2(props) {
   return(
     <SafeAreaView style={styles.container}>
     <QuestionText
@@ -43,6 +97,7 @@ export function Checkbox(props) {
           <Field type="checkbox" name="answered" value=">15,000 students" />
           Large 
         </label>
+        <View>Answered: {values.answered}</View>
       </View>
     <button type="submit">Submit</button>
     
@@ -63,4 +118,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Checkbox;
+*/
+
+export default Q2;

@@ -5,6 +5,7 @@ import { styles } from '../Styles';
 import { Stack } from "../screens/Stack";
 import { Logs } from "../screens/Login";
 import { Register_Screen } from "../screens/Register";
+import Register2 from '../screens/Register_dd'
 
 
 import {Q1} from "../Questions/Question1";
@@ -12,27 +13,28 @@ import {Q2} from "../Questions/Question2";
 import {Q3} from "../Questions/Question3";
 import {Q4} from "../Questions/Question4";
 import {Q5} from "../Questions/Question5";
-import {Q6} from "../Questions/Question6";
+import {Special_interest} from '../Questions/special_dd';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Fifty_states from '../screens/States_dropdown';
 
 const QuestionStack = createNativeStackNavigator();
 <QuestionStack.Navigator screenOptions={{headerShown: false}}></QuestionStack.Navigator>
 
 const Welcomescreen = ({ navigation }) => {
   return(
-    <SafeAreaView>
-      <Button 
-        title="Login"
-        color='#ff9f7f'
+    <SafeAreaView style = {new_styles.stylize}>
+      <Button style = {new_styles.button}
+        title="Login" 
+        color='black'
         onPress={() =>
           navigation.navigate('Login')
         }
       />
       <Button 
         title="Register"
-        color='#ff9f7f'
+        color='black'
         onPress={() =>
           navigation.navigate('Register')
         }
@@ -41,14 +43,13 @@ const Welcomescreen = ({ navigation }) => {
   )
 }
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation, props }) => {
   return (
-    <SafeAreaView>
-      <Logs/>
-      
-      <Button 
+    <SafeAreaView style = {new_styles.stylize}>
+      <Logs />
+      <Button
         title="Log in"
-        color='#ff9f7f'
+        color='black'
         onPress={() =>
           navigation.navigate('Real App')
         }
@@ -60,11 +61,11 @@ const Login = ({ navigation }) => {
 
 const Register = ({ navigation }) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style = {new_styles.stylize}>
       <Register_Screen/>
       <Button 
         title="Go to Questionaire"
-        color='#ff9f7f'
+        color='black'
         onPress={() =>
           navigation.navigate('Question 1')
         }
@@ -75,14 +76,13 @@ const Register = ({ navigation }) => {
 };
 
 
-
 const Question1Screen = ({ navigation }) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style = {new_styles.checkboxes}>
       <Q1/>
       <Button 
         title="Go to Question 2"
-        color='#ff9f7f'
+        color='black'
         onPress={() =>
           navigation.navigate('Question 2')
         }
@@ -93,11 +93,11 @@ const Question1Screen = ({ navigation }) => {
 };
 const Question2Screen = ({navigation}) => {
   return(
-    <SafeAreaView>
+    <SafeAreaView style = {new_styles.checkboxes}>
       <Q2/>
       <Button
         title="Go to Question 3"
-        color='#ff9f7f'
+        color ='black'
         onPress={() =>
           navigation.navigate('Question 3')
         }
@@ -109,11 +109,11 @@ const Question2Screen = ({navigation}) => {
 
 const Question3Screen = ({navigation}) => {
   return(
-    <SafeAreaView>
+    <SafeAreaView style = {new_styles.checkboxes}>
       <Q3/>
       <Button
         title="Go to Question 4"
-        color='#ff9f7f'
+        color='black'
         onPress={() =>
           navigation.navigate('Question 4')
         }
@@ -125,11 +125,11 @@ const Question3Screen = ({navigation}) => {
 
 const Question4Screen = ({navigation}) => {
   return(
-    <SafeAreaView>
+    <SafeAreaView style = {new_styles.drop_down}> 
       <Q4/>
       <Button
         title="Go to Question 5"
-        color='#ff9f7f'
+        color='black'
         onPress={() =>
           navigation.navigate('Question 5')
         }
@@ -141,27 +141,11 @@ const Question4Screen = ({navigation}) => {
 
 const Question5Screen = ({navigation}) => {
   return(
-    <SafeAreaView>
+    <SafeAreaView style = {new_styles.checkboxes}>
       <Q5/>
-      <Button
-        title="Go to Question 6"
-        color='#ff9f7f'
-        onPress={() =>
-          navigation.navigate('Question 6')
-        }
-      />
-    </SafeAreaView>
-
-  );
-};
-
-const Question6Screen = ({navigation}) => {
-  return(
-    <SafeAreaView>
-      <Q6/>
       <Button 
         title="Done"
-        color='#ff9f7f'
+        color='black'
         onPress={() =>
           navigation.navigate('Login')
         }
@@ -210,7 +194,6 @@ export function Question() {
         <QuestionStack.Screen name="Question 3" component={Question3Screen} />
         <QuestionStack.Screen name="Question 4" component={Question4Screen} />
         <QuestionStack.Screen name="Question 5" component={Question5Screen} />
-        <QuestionStack.Screen name="Question 6" component={Question6Screen} />
         
         
         
@@ -220,4 +203,30 @@ export function Question() {
 }
 
 export default Question;
+
+const new_styles = StyleSheet.create({
+  stylize: {
+    flex: 1, //flexible
+    backgroundColor: '#9BD1D1',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  checkboxes: {
+    flex: 1, //flexible
+    fontSize: 30,
+    backgroundColor: '#9BD1D1',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  drop_down: {
+    flex: 1, //flexible
+    //fontSize: 30,
+    backgroundColor: '#9BD1D1',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
+  
+});
 

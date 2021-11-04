@@ -9,20 +9,22 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 import { Checkbox } from './checkbox2';
 
 import Fifty_states from '../screens/States_dropdown';
-
+import { inlineStyles } from 'react-native-svg';
 
 
 //add drop down 
 
 export const Q3 = (props) => {
   return (
-    <SafeAreaView>
-      <Text> Where would you like for the school to be located (in USA): </Text>
+    
+    <SafeAreaView style = {inlineStyles.loginContainer}>
+      <Text > Where would you like for the school to be located (in USA): </Text>
         <Formik
           initialValues={{
               east: false,
               mid: false,
               west: false,
+              specific: false,
 
           }}
           onSubmit={(values, { resetForm }) => {
@@ -57,11 +59,19 @@ export const Q3 = (props) => {
                   >
                       West Coast
                   </Checkbox>
-                  <Fifty_states/> 
-                    
-                
+                  <Checkbox 
+                      name={"specific"}
+                      isChecked={values?.specific}
+                      setFieldValue={setFieldValue}
+                  >
+                      Specific State
+                  </Checkbox>
+                  {values.specific == true?  <Fifty_states/>:  null}
+                  {values.east != '' || values.mid != '' || values.west != '' || values.specific != ''?
+                  <Button onPress={handleSubmit} title="Submit"></Button> :  null}
                   
-                  <Button onPress={handleSubmit} title="Submit"></Button>
+                   
+                   
               </View>
           )}
       </Formik>
@@ -70,6 +80,18 @@ export const Q3 = (props) => {
       
   )
 }
+const styles = StyleSheet.create({
+  title_text:{
+    fontSize: 30,
+    height: 50,
+    alignItems: 'center',
+  },
+  text:{
+    fontSize: 20,
+    alignItems: 'center',
+  },
+  
+})
 
 /*
 const QuestionText = (props) => {

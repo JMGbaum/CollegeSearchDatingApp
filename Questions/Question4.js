@@ -7,18 +7,20 @@ import { Formik, Field, Form } from 'formik';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 import { Checkbox } from './checkbox2';
-
+import {Special_interest} from './special_dd';
+import {Religious} from './religious_dd';
 
 //add drop down 
 
 export const Q4 = (props) => {
   return (
-    <SafeAreaView>
-      <Text> Are you looking for a special interest school? </Text>
-      <Text>Example: Historically Black Colleges, Ivy Leagues, Art Colleges, etc?</Text>
+    <SafeAreaView >
+      <Text style = {styles.title_text}>Are you looking for a special interest school? </Text>
+      <Text style = {styles.text}>Ex: Historically Black Colleges, Ivy Leagues</Text>
         <Formik
           initialValues={{
-              Special_Interest: false,
+              Interests: false,
+              Religious_interest: false,
           }}
           onSubmit={(values, { resetForm }) => {
               console.log(values);
@@ -32,13 +34,25 @@ export const Q4 = (props) => {
           }) => (
               <View>
                   <Checkbox 
-                      name={"Special_Interest"}
-                      isChecked={values?.Special_Interest}
+                      name={"Interests"}
+                      isChecked={values?.Interests}
                       setFieldValue={setFieldValue}
                   >
-                      Click for Special Interest
+                    <Text style={styles.text}>Click for Special Interest</Text>
                   </Checkbox>
-                  <Button onPress={handleSubmit} title="Submit"></Button>
+                  <Checkbox 
+                      name={"Religious_interest"}
+                      isChecked={values?.Religious_interest}
+                      setFieldValue={setFieldValue} 
+                  >
+                    <Text style={styles.text}>Click for Religious Affliation</Text>
+                 
+                  </Checkbox>
+                  {values.Interests != false?  <Special_interest/>:  null}
+                  {values.Religious_interest != false?  <Religious/>:  null}
+                
+                  
+                  <Button onPress={handleSubmit} title="Submit"></Button> 
               </View>
           )}
       </Formik>
@@ -47,6 +61,21 @@ export const Q4 = (props) => {
       
   )
 }
+
+const styles = StyleSheet.create({
+  title_text:{
+    fontSize: 20,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  text:{
+    fontSize: 15,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+})
 /*
 const QuestionText = (props) => {
   return(

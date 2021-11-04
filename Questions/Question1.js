@@ -11,8 +11,8 @@ import { Checkbox } from './checkbox2';
 
 export const Q1 = (props) => {
   return (
-    <SafeAreaView>
-      <Text> 2 or 4 year school</Text>
+    <SafeAreaView >
+      <Text style = {styles.title_text}> 2 or 4 year school</Text>
         <Formik
           initialValues={{
               two_year: false,
@@ -28,22 +28,23 @@ export const Q1 = (props) => {
               values,
               setFieldValue
           }) => (
-              <View>
+              <View >
                   <Checkbox 
                       name={"two_year"}
                       isChecked={values?.two_year}
                       setFieldValue={setFieldValue}
                   >
-                      2 year school
+                      <Text  style = {styles.text}>2 year school</Text>
                   </Checkbox>
                   <Checkbox 
                       name={"four_year"}
                       isChecked={values?.four_year}
                       setFieldValue={setFieldValue}
                   >
-                      4 year school
+                      <Text  style = {styles.text}>4 year school</Text>
                   </Checkbox>
-                  <Button onPress={handleSubmit} title="Submit"></Button>
+                  {values.two_year != '' || values.four_year != ''?  <Button onPress={handleSubmit} title="Submit"></Button> :  null}
+                  
               </View>
           )}
 
@@ -54,7 +55,17 @@ export const Q1 = (props) => {
   )
 }
 
-
+const styles = StyleSheet.create({
+  title_text:{
+    fontSize: 30,
+    height: 50,
+    alignItems: 'center',
+  },
+  text:{
+    fontSize: 20,
+    alignItems: 'center',
+  }
+})
 /*
 const QuestionText = (props) => {
   return(

@@ -9,13 +9,16 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 import { Checkbox } from './checkbox2';
 
 
+//add drop down 
+
 export const Q5 = (props) => {
   return (
     <SafeAreaView>
-      <Text> Are you looking for a school with a religious affliation? </Text>
+      <Text style={styles.title_text}>Are you looking for a specific program or major? </Text>
+      <Text>Example: BFA programs, Conservatories, Schools with Pre-med</Text>
         <Formik
           initialValues={{
-              religious: false,
+              program: false,
           }}
           onSubmit={(values, { resetForm }) => {
               console.log(values);
@@ -29,11 +32,11 @@ export const Q5 = (props) => {
           }) => (
               <View>
                   <Checkbox 
-                      name={"religious"}
-                      isChecked={values?.religious}
+                      name={"program"}
+                      isChecked={values?.program}
                       setFieldValue={setFieldValue}
                   >
-                      Click for Religious Affliation
+                      Click for Specific Program
                   </Checkbox>
                   <Button onPress={handleSubmit} title="Submit"></Button>
               </View>
@@ -45,7 +48,18 @@ export const Q5 = (props) => {
   )
 }
 
-
+const styles = StyleSheet.create({
+  title_text:{
+    fontSize: 19.5,
+    height: 30,
+    alignItems: 'center',
+  },
+  text:{
+    fontSize: 15,
+    height: 60,
+    alignItems: 'center',
+  }
+})
 /*
 const QuestionText = (props) => {
   return(
@@ -54,17 +68,18 @@ const QuestionText = (props) => {
     </View>
   );
 }
-export function Q5(props) {
+export function Q6(props) {
   return(
     <SafeAreaView style={styles.container}>
     <QuestionText
-      question = "Are you looking for a school with a religious affliation?"/>
-
+      question = "Are you looking for a specific program or major?"/>
+    <h2>Example: BFA programs, Conservatories, Schools with Pre-med</h2>
     <Formik
     initialValues={{ answered: [] }}
     onSubmit={async (values) => {
       await sleep(500);
       JSON.stringify(values, null, 2);
+      
     }}
     >
     
@@ -73,7 +88,7 @@ export function Q5(props) {
         <View id="my-radio-group"> </View>
         <View role="group" aria-labelledby="my-radio-group">
         <label>
-          <Field type="radio" name="answered" value="Yes" />
+          <Field type="radio" name="answered" value="Yes"/>
           Yes
         </label>
         <label>
@@ -82,7 +97,7 @@ export function Q5(props) {
         </label>
         <View>Answered: {values.answered}</View>
       </View>
-    <button type="submit">Submit</button>
+    <button type="submit"> Submit </button> 
   </Form>
   )}
   </Formik>
@@ -99,5 +114,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+
 */
+
 export default Q5;

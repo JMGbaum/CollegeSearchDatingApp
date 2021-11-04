@@ -11,7 +11,7 @@ import { Checkbox } from './checkbox2';
 export const Q2 = (props) => {
   return (
     <SafeAreaView>
-      <Text> Prefered Student Body Size: </Text>
+      <Text style = {styles.title_text}> Prefered Student Body Size: </Text>
         <Formik
           initialValues={{
               small: false,
@@ -34,23 +34,25 @@ export const Q2 = (props) => {
                       isChecked={values?.small}
                       setFieldValue={setFieldValue}
                   >
-                      Less than 5000 students
+                      <Text style = {styles.text}>Less than 5,000 students</Text> 
                   </Checkbox>
                   <Checkbox 
                       name={"medium"}
                       isChecked={values?.medium}
                       setFieldValue={setFieldValue}
                   >
-                      Between 5000 and 15,000 
+                      <Text style = {styles.text}>Between 5,000 and 15,000</Text> 
                   </Checkbox>
                   <Checkbox 
                       name={"large"}
                       isChecked={values?.large}
                       setFieldValue={setFieldValue}
                   >
-                      Greater than 15,000 
+                       <Text style = {styles.text}> Greater than 15,000</Text> 
                   </Checkbox>
-                  <Button onPress={handleSubmit} title="Submit"></Button>
+                  {values.small != '' || values.medium != '' || values.large != ''? 
+                  <Button onPress={handleSubmit} title="Submit"></Button> :  null}
+                  
               </View>
           )}
 
@@ -60,6 +62,18 @@ export const Q2 = (props) => {
       
   )
 }
+
+const styles = StyleSheet.create({
+  title_text:{
+    fontSize: 25,
+    height: 50,
+    alignItems: 'center',
+  },
+  text:{
+    fontSize: 15,
+    alignItems: 'center',
+  }
+})
 /*
 const QuestionText = (props) => {
   return(

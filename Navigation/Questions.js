@@ -1,11 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, View, Button, StyleSheet} from 'react-native';
-import { styles } from '../Styles';
+import { SafeAreaView, View, Button,Dimensions, StyleSheet} from 'react-native';
+import { NavBar } from '../components/NavBar';
 import { Stack } from "../screens/Stack";
 import { Logs } from "../screens/Login";
 import { Register_Screen } from "../screens/Register";
-import Register2 from '../screens/Register_dd'
 
 
 import {Q1} from "../Questions/Question1";
@@ -13,11 +12,9 @@ import {Q2} from "../Questions/Question2";
 import {Q3} from "../Questions/Question3";
 import {Q4} from "../Questions/Question4";
 import {Q5} from "../Questions/Question5";
-import {Special_interest} from '../Questions/special_dd';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Fifty_states from '../screens/States_dropdown';
 
 const QuestionStack = createNativeStackNavigator();
 <QuestionStack.Navigator screenOptions={{headerShown: false}}></QuestionStack.Navigator>
@@ -155,24 +152,69 @@ const Question5Screen = ({navigation}) => {
   );
 };
 
-const RealApp = () => {
+const RealApp = ({navigation}) => {
   return(
     <View style={{flex:1, backgroundColor:"#000000"}}>
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style = {new_styles.container}>
         <View>
           <Stack />
           <StatusBar style="auto" />
-        </View>
-        <View style={styles.navbar}>
-          <Button id="likes" title="Likes"></Button>
-          <Button id="stack" title="Stack"></Button>
-          <Button id="settings" title="Settings"></Button>
+          <NavBar/>
         </View>
       </SafeAreaView>
     </View>
 
   );
 };
+/*
+<View style={new_styles.navbar}>
+          <Button 
+            id="likes" 
+            title="Likes"
+            onPress={() =>
+              navigation.navigate('Likes')
+            }
+          >
+          </Button>
+          <Button id="settings" title="Settings" onPress={() =>
+              navigation.navigate('Settings')
+            }></Button>
+        </View>
+
+const Likes = ({navigation}) => {
+  return(
+    <SafeAreaView>
+      <Text> These are likes </Text>
+      <Button 
+        title="Done"
+        color='black'
+        onPress={() =>
+          navigation.navigate('Login')
+        }
+      />
+    </SafeAreaView>
+
+  );
+};
+
+const Settings = ({navigation}) => {
+  return(
+    <SafeAreaView>
+      <Text> These are settings </Text>
+      <Button 
+        title="Done"
+        color='black'
+        onPress={() =>
+          navigation.navigate('Login')
+        }
+      />
+    </SafeAreaView>
+
+  );
+};
+<QuestionStack.Screen name="Likes" component={Likes} />
+<QuestionStack.Screen name="Settings" component={Settings} />
+*/
 
 
 export function Question() {
@@ -194,6 +236,9 @@ export function Question() {
         <QuestionStack.Screen name="Question 3" component={Question3Screen} />
         <QuestionStack.Screen name="Question 4" component={Question4Screen} />
         <QuestionStack.Screen name="Question 5" component={Question5Screen} />
+
+        
+        
         
         
         
@@ -226,7 +271,25 @@ const new_styles = StyleSheet.create({
     backgroundColor: '#9BD1D1',
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+
+  container: {
+    backgroundColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+  navbar: {
+    width: Dimensions.get("screen").width,
+    height: Dimensions.get("screen").height*0.1,
+    backgroundColor: "#b1b1b1",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems:"center",
+    top: Dimensions.get("screen").height*0.9,
+    zIndex: 10,
+    position:"absolute",
+  },
   
 });
 

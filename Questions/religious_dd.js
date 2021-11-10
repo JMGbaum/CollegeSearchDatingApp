@@ -43,7 +43,7 @@ export function Religious(){
         {label: 'Presbyterian Church (USA)', value: 'PCUSA'},
         {label: 'Lutheran Church in America', value: 'LCUSA'},
         {label: 'Lutheran Church - Missouri Synod', value: 'LCMS'},
-        {label: 'Mennonite Church', value: 'MC'},
+        {label: 'Mennonite Church', value: 'MC2'},
         {label: 'United Methodist', value: 'UM'},
         {label: 'Protestant Episcopal', value: 'PE'},
         {label: 'Churches of Christ', value: 'COC'},

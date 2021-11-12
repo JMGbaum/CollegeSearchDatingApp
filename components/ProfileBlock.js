@@ -1,6 +1,6 @@
 import { FONT } from "../Styles";
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet} from "react-native";
 
 export const ProfileBlock = (props) => {
     return (
@@ -11,6 +11,7 @@ export const ProfileBlock = (props) => {
         <View>
           <Image source={{uri: "https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"}}></Image>
         </View>
+        
       </View>
     )
 }

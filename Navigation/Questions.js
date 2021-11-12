@@ -1,7 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+<<<<<<< Updated upstream
 import { SafeAreaView, View, Button, StyleSheet} from 'react-native';
 import { styles } from '../Styles';
+=======
+import { SafeAreaView, View, Button, StyleSheet,Dimensions, Text, TouchableOpacity, Image} from 'react-native';
+
+
+>>>>>>> Stashed changes
 import { Stack } from "../screens/Stack";
 import { Logs } from "../screens/Login";
 import { Register_Screen } from "../screens/Register";
@@ -59,7 +65,7 @@ const Login = ({ navigation, props }) => {
   );
 };
 
-const Register = ({ navigation }) => {
+const Register = ({ navigation}) => {
   return (
     <SafeAreaView style = {new_styles.stylize}>
       <Register_Screen/>
@@ -76,14 +82,14 @@ const Register = ({ navigation }) => {
 };
 
 
-const Question1Screen = ({ navigation }) => {
+const Question1Screen = ({ navigation, handleSubmit }) => {
   return (
     <SafeAreaView style = {new_styles.checkboxes}>
       <Q1/>
       <Button 
         title="Go to Question 2"
         color='black'
-        onPress={() =>
+        onPress={(handleSubmit) =>
           navigation.navigate('Question 2')
         }
       />
@@ -158,15 +164,42 @@ const Question5Screen = ({navigation}) => {
 const RealApp = () => {
   return(
     <View style={{flex:1, backgroundColor:"#000000"}}>
+<<<<<<< Updated upstream
       <SafeAreaView style={styles.container}>
+=======
+      
+      <SafeAreaView style={new_styles.container}>
+      
+>>>>>>> Stashed changes
         <View>
           <Stack />
           <StatusBar style="auto" />
         </View>
+<<<<<<< Updated upstream
         <View style={styles.navbar}>
           <Button id="likes" title="Likes"></Button>
           <Button id="stack" title="Stack"></Button>
           <Button id="settings" title="Settings"></Button>
+=======
+        <View style={new_styles.navbar}>
+          <Button 
+              title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }
+          />
+
+          <Button title="Stack"
+              onPress={() =>
+                navigation.navigate('Real App')
+              }></Button>
+
+          <Button title="Likes"
+              onPress={() =>
+                navigation.navigate('Likes')
+              }></Button>
+
+>>>>>>> Stashed changes
         </View>
       </SafeAreaView>
     </View>
@@ -174,7 +207,84 @@ const RealApp = () => {
   );
 };
 
+<<<<<<< Updated upstream
 
+=======
+const Settings = ({navigation}) => {
+  return(
+    <SafeAreaView>
+      <Settings_Screen/>
+      <View style={new_styles.other_navbar}>
+        <Button 
+              title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }
+          />
+          <Button 
+              title="Stack"
+              onPress={() =>
+                navigation.navigate('Real App')
+              }
+          />
+          <Button title="Likes"
+              onPress={() =>
+                navigation.navigate('Likes')
+              }></Button>
+          
+      </View>
+    </SafeAreaView>
+
+
+  );
+};
+
+const Likes = ({navigation}) => {
+  return(
+    <SafeAreaView>
+      <Text style = {new_styles.title_text}> Welcome to your likes!</Text>
+      <View style={new_styles.other_navbar}>
+        <Button title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }></Button>
+          <Button 
+              title="Stack"
+              onPress={() =>
+                navigation.navigate('Real App')
+              }
+          />
+          
+          <Button title="Likes"
+              onPress={() =>
+                navigation.navigate('Likes')
+              }></Button>
+      </View>
+
+    </SafeAreaView>
+    
+  );
+};
+
+/*
+const Like_Button= (props) => {
+  return (
+    <View>
+       <View>
+          <TouchableOpacity onPress={() => alert('Pressed')}>
+              <Image source={{
+
+              uri: "https://www.emoji.com/wp-content/uploads/2018/12/emoji-icon-glossy-01-08-person-emotion-red-heart-72dpi-forPersonalUseOnly.png" }}
+              style={new_styles.like_button}
+              />
+          </TouchableOpacity >
+      </View>
+    </View>
+  )
+}
+*/
+
+>>>>>>> Stashed changes
 export function Question() {
   return (
     <NavigationContainer>
@@ -226,7 +336,53 @@ const new_styles = StyleSheet.create({
     backgroundColor: '#9BD1D1',
     justifyContent: 'center',
     alignItems: 'center',
+<<<<<<< Updated upstream
   }
+=======
+  },
+
+  navbar: {
+    width: Dimensions.get("screen").width,
+    height: Dimensions.get("screen").height*0.1,
+    backgroundColor: "#b1b1b1",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems:"center",
+    top: Dimensions.get("screen").height*0.84,
+    zIndex: 10,
+    position:"absolute",
+  },
+
+  other_navbar: {
+    width: Dimensions.get("screen").width,
+    height: Dimensions.get("screen").height*0.1,
+    backgroundColor: "#b1b1b1",
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems:"center",
+    top: Dimensions.get("screen").height*0.78,
+    zIndex: 10,
+    position:"absolute",
+  },
+
+  container: {
+    backgroundColor: '#000',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1,
+  },
+
+  like_button:{
+    width: 100,
+    height: 100,
+    backgroundColor: 'cyan',
+    position:"absolute",
+    top: Dimensions.get("screen").height*0.78,
+    
+  
+  
+  },
+>>>>>>> Stashed changes
   
 });
 

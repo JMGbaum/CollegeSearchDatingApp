@@ -167,6 +167,12 @@ const RealApp = ({navigation}) => {
                 navigation.navigate('Settings')
               }
           />
+          <Button 
+              title="Stack"
+              onPress={() =>
+                navigation.navigate('Real App')
+              }
+          />
           <Button title="Likes"
               onPress={() =>
                 navigation.navigate('Likes')
@@ -185,6 +191,12 @@ const Settings = ({navigation}) => {
     <SafeAreaView>
       <Settings_Screen/>
       <View style={new_styles.other_navbar}>
+        <Button 
+                title="Settings"
+                onPress={() =>
+                  navigation.navigate('Settings')
+                }
+            />
           <Button 
               title="Stack"
               onPress={() =>
@@ -208,17 +220,21 @@ const Likes = ({navigation}) => {
     <SafeAreaView>
       <Text style = {new_styles.title_text}> Welcome to your likes!</Text>
       <View style={new_styles.other_navbar}>
+        <Button title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }></Button>
           <Button 
               title="Stack"
               onPress={() =>
                 navigation.navigate('Real App')
               }
           />
-          <Button title="Settings"
-              onPress={() =>
-                navigation.navigate('Settings')
-              }></Button>
           
+          <Button title="Likes"
+              onPress={() =>
+                navigation.navigate('Likes')
+              }></Button>
       </View>
 
     </SafeAreaView>

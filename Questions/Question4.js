@@ -5,6 +5,7 @@ import { Formik, Field, Form } from 'formik';
 
 //start time: 8:20-9:20, 9:00-9:33
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const fs = require('expo-file-system');
 
 import { Checkbox } from './checkbox2';
 import {Special_interest} from './special_dd';
@@ -25,7 +26,13 @@ export const Q4 = (props) => {
               religious: [],
           }}
           onSubmit={(values, { resetForm }) => {
-              console.log(values);
+            fs.readAsStringAsync(fs.documentDirectory + "data.json").then(data => {
+              const local_data = JSON.parse(data);
+              local_data.preferences.interests.special = values.special;
+              local_data.preferences.interests.religious = values.religious;
+              fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
+            });
+            console.log(values);
           }}
       >
           {({

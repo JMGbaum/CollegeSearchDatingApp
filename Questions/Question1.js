@@ -2,12 +2,12 @@
 import React from 'react';
 import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import { Formik, Field, Form } from 'formik';
+const fs = require('expo-file-system');
 
 //start time: 8:20-9:20, 9:00-9:33
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 import { Checkbox } from './checkbox2';
-
 
 export const Q1 = (props) => {
   return (
@@ -19,6 +19,11 @@ export const Q1 = (props) => {
               four_year: false,
           }}
           onSubmit={(values, { resetForm }) => {
+              fs.readAsStringAsync(fs.documentDirectory + "data.json").then(data => {
+                  const local_data = JSON.parse(data);
+                  local_data.preferences.program_length = values;
+                  fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
+              });
               console.log(values);
           }}
       >

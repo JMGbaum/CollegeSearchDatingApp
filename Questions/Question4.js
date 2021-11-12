@@ -19,8 +19,10 @@ export const Q4 = (props) => {
       <Text style = {styles.text}>Ex: Historically Black Colleges, Ivy Leagues</Text>
         <Formik
           initialValues={{
-              Interests: false,
-              Religious_interest: false,
+              special_interest: false,
+              religious_interest: false,
+              special: [],
+              religious: [],
           }}
           onSubmit={(values, { resetForm }) => {
               console.log(values);
@@ -34,24 +36,23 @@ export const Q4 = (props) => {
           }) => (
               <View>
                   <Checkbox 
-                      name={"Interests"}
-                      isChecked={values?.Interests}
+                      name={"special_interest"}
+                      isChecked={values?.special_interest}
                       setFieldValue={setFieldValue}
                   >
                     <Text style={styles.text}>Click for Special Interest</Text>
                   </Checkbox>
                   <Checkbox 
-                      name={"Religious_interest"}
-                      isChecked={values?.Religious_interest}
+                      name={"religious_interest"}
+                      isChecked={values?.religious_interest}
                       setFieldValue={setFieldValue} 
                   >
                     <Text style={styles.text}>Click for Religious Affliation</Text>
                  
                   </Checkbox>
-                  {values.Interests != false?  <Special_interest/>:  null}
-                  {values.Religious_interest != false?  <Religious/>:  null}
+                  {values.special_interest != false?  <Special_interest name="special" setFieldValue={setFieldValue}/>:  null}
+                  {values.religious_interest != false?  <Religious name="religious" setFieldValue={setFieldValue}/>:  null}
                 
-                  
                   <Button onPress={handleSubmit} title="Submit"></Button> 
               </View>
           )}

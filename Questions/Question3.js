@@ -25,6 +25,7 @@ export const Q3 = (props) => {
               mid: false,
               west: false,
               specific: false,
+              state: [],
 
           }}
           onSubmit={(values, { resetForm }) => {
@@ -66,7 +67,7 @@ export const Q3 = (props) => {
                   >
                       Specific State
                   </Checkbox>
-                  {values.specific == true?  <Fifty_states/>:  null}
+                  {values.specific == true?  <Fifty_states name="state" setFieldValue={setFieldValue}/>:  null}
                   {values.east != '' || values.mid != '' || values.west != '' || values.specific != ''?
                   <Button onPress={handleSubmit} title="Submit"></Button> :  null}
                   

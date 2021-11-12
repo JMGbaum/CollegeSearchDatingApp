@@ -70,6 +70,9 @@ export function Fifty_states(props){
                 multiple={true}
                 min={0}
                 max={50}
+                onChangeValue={(val)=>{
+                  props.setFieldValue(props.name, val);
+                }}
             />
         
         </SafeAreaView>

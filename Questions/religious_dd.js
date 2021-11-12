@@ -2,7 +2,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import React, {useState} from 'react';
 import { SafeAreaView, Text, StyleSheet} from 'react-native';
 
-export function Religious(){
+export function Religious(props){
       const [open, setOpen] = useState(false);
       const [value, setValue] = useState(null);
       const [items, setItems] = useState([
@@ -85,6 +85,9 @@ export function Religious(){
                 multiple={true}
                 min={0}
                 max={64}
+                onChangeValue={(val)=>{
+                  props.setFieldValue(props.name, val);
+                }}
             />
         
         </SafeAreaView>

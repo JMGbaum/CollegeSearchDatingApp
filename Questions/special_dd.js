@@ -2,7 +2,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import React, {useState} from 'react';
 import { SafeAreaView, Text, StyleSheet} from 'react-native';
 
-export function Special_interest(){
+export function Special_interest(props){
       const [open, setOpen] = useState(false);
       const [value, setValue] = useState(null);
       const [items, setItems] = useState([
@@ -28,6 +28,9 @@ export function Special_interest(){
                 multiple={true}
                 min={0}
                 max={9}
+                onChangeValue={(val)=>{
+                  props.setFieldValue(props.name, val);
+                }}
             />
         
         </SafeAreaView>

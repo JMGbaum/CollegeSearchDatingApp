@@ -1,13 +1,9 @@
-// Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
-import { Formik, Field, Form } from 'formik';
-const fs = require('expo-file-system');
-
-//start time: 8:20-9:20, 9:00-9:33
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
+import { Button, View, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Formik } from 'formik';
 import { Checkbox } from './checkbox2';
+
+const fs = require('expo-file-system');
 
 export const Q1 = (props) => {
   return (

@@ -1,6 +1,6 @@
 import DropDownPicker from 'react-native-dropdown-picker';
-import React, {useState} from 'react';
-import { SafeAreaView, Text, StyleSheet} from 'react-native';
+import React, { useState } from 'react';
+import { SafeAreaView, StyleSheet} from 'react-native';
 
 export function Special_interest(props){
       const [open, setOpen] = useState(false);

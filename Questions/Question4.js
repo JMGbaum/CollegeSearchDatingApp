@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button, View, SafeAreaView, StyleSheet, Text } from 'react-native';
-import { Formik } from 'formik';
+import { View, SafeAreaView, StyleSheet, Text} from 'react-native';
+import { Formik} from 'formik';
+import { Button } from 'react-native-elements/dist/buttons/Button';
+
+
 import { Checkbox } from './checkbox2';
 import { Special_interest } from './special_dd';
 import { Religious } from './religious_dd';
@@ -20,6 +23,7 @@ export const Q4 = (props) => {
               religious: [],
           }}
           onSubmit={(values, { resetForm }) => {
+              props.navigate("Real App");
             fs.readAsStringAsync(fs.documentDirectory + "data.json").then(data => {
               const local_data = JSON.parse(data);
               local_data.preferences.interests.special = values.special;
@@ -53,8 +57,11 @@ export const Q4 = (props) => {
                   </Checkbox>
                   {values.special_interest != false?  <Special_interest name="special" setFieldValue={setFieldValue}/>:  null}
                   {values.religious_interest != false?  <Religious name="religious" setFieldValue={setFieldValue}/>:  null}
-                
-                  <Button onPress={handleSubmit} title="Submit"></Button> 
+           
+                  
+                  <Button 
+                  buttonStyle={styles.button}
+                  onPress={handleSubmit} title="Submit"></Button> 
               </View>
           )}
       </Formik>
@@ -70,6 +77,16 @@ const styles = StyleSheet.create({
     height: 30,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  button:{
+    backgroundColor: '#ff9f7f',
+    margin: 20,
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
   },
   text:{
     fontSize: 15,

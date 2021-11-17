@@ -2,7 +2,9 @@ import React from 'react';
 import { SafeAreaView } from 'react-native';
 import Question from './Navigation/Questions';
 
+
 const fs = require('expo-file-system');
+
 
 export default function App() {
   // create local storage file if it doesn't already exist

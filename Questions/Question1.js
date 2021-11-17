@@ -1,13 +1,15 @@
 import React from 'react';
-import { Button, View, SafeAreaView, StyleSheet, Text } from 'react-native';
-import { Formik } from 'formik';
+import { View, SafeAreaView, StyleSheet, Text} from 'react-native';
+import { Formik} from 'formik';
+import { Button } from 'react-native-elements';
+
 import { Checkbox } from './checkbox2';
 
 const fs = require('expo-file-system');
 
 export const Q1 = (props) => {
   return (
-    <SafeAreaView >
+    <SafeAreaView>
       <Text style = {styles.title_text}> 2 or 4 year school</Text>
         <Formik
           initialValues={{
@@ -21,10 +23,10 @@ export const Q1 = (props) => {
                   fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
               });
               console.log(values);
+              props.navigate("Question 2");
           }}
       >
           {({
-              handleChange,
               handleSubmit,
               values,
               setFieldValue
@@ -44,7 +46,10 @@ export const Q1 = (props) => {
                   >
                       <Text  style = {styles.text}>4 year school</Text>
                   </Checkbox>
-                  {values.two_year != '' || values.four_year != ''?  <Button onPress={handleSubmit} title="Submit"></Button> :  null}
+                  <Button 
+                  buttonStyle={styles.button}
+                  onPress={handleSubmit} 
+                  title="Submit"></Button> 
                   
               </View>
           )}
@@ -61,6 +66,16 @@ const styles = StyleSheet.create({
     fontSize: 30,
     height: 50,
     alignItems: 'center',
+  },
+  button:{
+    backgroundColor: '#ff9f7f',
+    margin: 20,
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
   },
   text:{
     fontSize: 20,

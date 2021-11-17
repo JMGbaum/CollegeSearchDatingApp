@@ -1,6 +1,9 @@
 import React from 'react';
-import { Button, View, SafeAreaView, StyleSheet, Text } from 'react-native';
-import { Formik } from 'formik';
+
+import { View, SafeAreaView, StyleSheet, Text} from 'react-native';
+import { Formik} from 'formik';
+import { Button } from 'react-native-elements/dist/buttons/Button';
+
 import { Checkbox } from './checkbox2';
 
 const fs = require('expo-file-system');
@@ -15,6 +18,10 @@ export const Q5 = (props) => {
               program: false,
           }}
           onSubmit={(values, { resetForm }) => {
+
+              console.log(values);
+              props.navigate("Real App");
+=======
             fs.readAsStringAsync(fs.documentDirectory + "data.json").then(data => {
               const local_data = JSON.parse(data);
               local_data.preferences.program = values.program;
@@ -37,7 +44,9 @@ export const Q5 = (props) => {
                   >
                       Click for Specific Program
                   </Checkbox>
-                  <Button onPress={handleSubmit} title="Submit"></Button>
+                  <Button 
+                  buttonStyle={styles.button}
+                  onPress={handleSubmit} title="Submit"></Button>
               </View>
           )}
       </Formik>
@@ -52,6 +61,16 @@ const styles = StyleSheet.create({
     fontSize: 19.5,
     height: 30,
     alignItems: 'center',
+  },
+  button:{
+    backgroundColor: '#ff9f7f',
+    margin: 20,
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
   },
   text:{
     fontSize: 15,

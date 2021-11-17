@@ -1,15 +1,12 @@
-// Formik x React Native example
 import React from 'react';
 import {View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import { Formik} from 'formik';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Checkbox } from './checkbox2';
-
 import Fifty_states from '../screens/States_dropdown';
 import { inlineStyles } from 'react-native-svg';
 
-
-//add drop down 
+const fs = require('expo-file-system');
 
 export const Q3 = (props) => {
   return (
@@ -22,11 +19,21 @@ export const Q3 = (props) => {
               mid: false,
               west: false,
               specific: false,
+              state: [],
 
           }}
           onSubmit={(values, { resetForm }) => {
-              console.log(values);
               props.navigate("Question 4");
+            fs.readAsStringAsync(fs.documentDirectory + "data.json").then(data => {
+                const local_data = JSON.parse(data);
+                local_data.preferences.location.east = values.east;
+                local_data.preferences.location.mid = values.mid;
+                local_data.preferences.location.west = values.west;
+                local_data.preferences.location.specific = values.state;
+                fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
+            });
+            
+            console.log(values);
           }}
       >
           {({
@@ -64,10 +71,9 @@ export const Q3 = (props) => {
                   >
                       Specific State
                   </Checkbox>
-                  {values.specific == true?  <Fifty_states/>:  null}
-                  <Button 
-                  buttonStyle={styles.button}
-                  onPress={handleSubmit} title="Submit"></Button> 
+                  {values.specific == true?  <Fifty_states name="state" setFieldValue={setFieldValue}/>:  null}
+                  {values.east != '' || values.mid != '' || values.west != '' || values.specific != ''?
+                  <Button buttonStyle={styles.button} onPress={handleSubmit} title="Submit"></Button> :  null}
                   
                    
                    

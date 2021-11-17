@@ -41,7 +41,7 @@ const Login = ({ navigation, props }) => {
   );
 };
 
-const Register = ({ navigation }) => {
+const Register = ({ navigation}) => {
   return (
     <SafeAreaView style = {new_styles.stylize}>
       <Register_Screen navigate={navigation.navigate}/>
@@ -55,7 +55,6 @@ const Question1Screen = ({ navigation}) => {
   return (
     <SafeAreaView style = {new_styles.checkboxes}>
       <Q1 navigate={navigation.navigate}/> 
-      
     </SafeAreaView>
     
   );
@@ -131,17 +130,18 @@ const RealApp = ({navigation}) => {
   );
 };
 
+
 const Settings = ({navigation}) => {
   return(
     <SafeAreaView>
       <Settings_Screen/>
       <View style={new_styles.other_navbar}>
         <Button 
-              title="Settings"
-              onPress={() =>
-                navigation.navigate('Settings')
-              }
-          />
+                title="Settings"
+                onPress={() =>
+                  navigation.navigate('Settings')
+                }
+            />
           <Button 
               title="Stack"
               onPress={() =>
@@ -165,12 +165,10 @@ const Likes = ({navigation}) => {
     <SafeAreaView>
       <Text style = {new_styles.title_text}> Welcome to your likes!</Text>
       <View style={new_styles.other_navbar}>
-        <Button 
-              title="Settings"
+        <Button title="Settings"
               onPress={() =>
                 navigation.navigate('Settings')
-              }
-          />
+              }></Button>
           <Button 
               title="Stack"
               onPress={() =>
@@ -181,13 +179,13 @@ const Likes = ({navigation}) => {
               onPress={() =>
                 navigation.navigate('Likes')
               }></Button>
-          
       </View>
 
     </SafeAreaView>
     
   );
 };
+
 export function Question() {
   return (
     <NavigationContainer>

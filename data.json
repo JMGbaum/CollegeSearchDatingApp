@@ -1,0 +1,33 @@
+{
+    "user_id": "",
+    "login_timestamp": -1,
+    "account": {
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "password": ""
+    },
+    "preferences": {
+        "program_length": {
+            "two_year": false,
+            "four_year": false
+        },
+        "student_body_size": {
+            "small": false,
+            "medium": false,
+            "large": false
+        },
+        "location": {
+            "east": false,
+            "mid": false,
+            "west": false,
+            "specific": []
+        },
+        "interests": {
+            "special": [],
+            "religious": []
+        },
+        "program": false
+    },
+    "likes": []
+}

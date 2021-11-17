@@ -10,7 +10,7 @@ export default function App() {
     if (!info.exists) {
       fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(require("./data.json")));
     }
-  })
+  });
 
   return (
     <SafeAreaView style={{flex:1}}>

@@ -1,6 +1,12 @@
 {
     "user_id": "",
     "login_timestamp": -1,
+    "account": {
+        "first_name": "",
+        "last_name": "",
+        "email": "",
+        "password": ""
+    },
     "preferences": {
         "program_length": {
             "two_year": false,

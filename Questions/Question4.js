@@ -1,16 +1,11 @@
-// Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
-import { Formik, Field, Form } from 'formik';
-
-//start time: 8:20-9:20, 9:00-9:33
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
+import { Button, View, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Formik } from 'formik';
 import { Checkbox } from './checkbox2';
-import {Special_interest} from './special_dd';
-import {Religious} from './religious_dd';
+import { Special_interest } from './special_dd';
+import { Religious } from './religious_dd';
 
-//add drop down 
+const fs = require('expo-file-system');
 
 export const Q4 = (props) => {
   return (
@@ -19,11 +14,19 @@ export const Q4 = (props) => {
       <Text style = {styles.text}>Ex: Historically Black Colleges, Ivy Leagues</Text>
         <Formik
           initialValues={{
-              Interests: false,
-              Religious_interest: false,
+              special_interest: false,
+              religious_interest: false,
+              special: [],
+              religious: [],
           }}
           onSubmit={(values, { resetForm }) => {
-              console.log(values);
+            fs.readAsStringAsync(fs.documentDirectory + "data.json").then(data => {
+              const local_data = JSON.parse(data);
+              local_data.preferences.interests.special = values.special;
+              local_data.preferences.interests.religious = values.religious;
+              fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
+            });
+            console.log(values);
           }}
       >
           {({
@@ -34,24 +37,23 @@ export const Q4 = (props) => {
           }) => (
               <View>
                   <Checkbox 
-                      name={"Interests"}
-                      isChecked={values?.Interests}
+                      name={"special_interest"}
+                      isChecked={values?.special_interest}
                       setFieldValue={setFieldValue}
                   >
                     <Text style={styles.text}>Click for Special Interest</Text>
                   </Checkbox>
                   <Checkbox 
-                      name={"Religious_interest"}
-                      isChecked={values?.Religious_interest}
+                      name={"religious_interest"}
+                      isChecked={values?.religious_interest}
                       setFieldValue={setFieldValue} 
                   >
                     <Text style={styles.text}>Click for Religious Affliation</Text>
                  
                   </Checkbox>
-                  {values.Interests != false?  <Special_interest/>:  null}
-                  {values.Religious_interest != false?  <Religious/>:  null}
+                  {values.special_interest != false?  <Special_interest name="special" setFieldValue={setFieldValue}/>:  null}
+                  {values.religious_interest != false?  <Religious name="religious" setFieldValue={setFieldValue}/>:  null}
                 
-                  
                   <Button onPress={handleSubmit} title="Submit"></Button> 
               </View>
           )}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View} from 'react-native';
+import { Text, View } from 'react-native';
 import CheckBox from 'react-native-check-box';
 
 export const Checkbox = ({children, ...props}) => {

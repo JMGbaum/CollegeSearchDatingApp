@@ -2,8 +2,6 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import React, {useState} from 'react';
 import { SafeAreaView, Text, StyleSheet} from 'react-native';
 
-import {Q3} from "../Questions/Question3";
-
 export function Fifty_states(props){
       const [open, setOpen] = useState(false);
       const [value, setValue] = useState(null);
@@ -72,6 +70,9 @@ export function Fifty_states(props){
                 multiple={true}
                 min={0}
                 max={50}
+                onChangeValue={(val)=>{
+                  props.setFieldValue(props.name, val);
+                }}
             />
         
         </SafeAreaView>

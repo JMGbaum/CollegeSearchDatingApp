@@ -1,9 +1,10 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, SafeAreaView, Text, StyleSheet} from 'react-native';
+import {TextInput, SafeAreaView, Text, StyleSheet} from 'react-native';
 import { Formik } from 'formik';
 import {Register2} from './Register_dd';
 import * as yup from 'yup'
+import { Button } from 'react-native-elements';
 
 const loginvalid = yup.object().shape({
     email: yup
@@ -23,11 +24,14 @@ const loginvalid = yup.object().shape({
 })
 
 
-export const Register_Screen = ({}) => (
+export const Register_Screen = (props) => (
   <Formik
     validationSchema={loginvalid}
     initialValues={{ first: '', last: '', email: '', password: '' }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => {
+      console.log(values);
+      props.navigate('Question 1');
+  }}
   >
     
     {({ handleChange, handleBlur, handleSubmit, errors, isValid, values }) => (
@@ -78,7 +82,11 @@ export const Register_Screen = ({}) => (
        {values.email != '' && values.password != '' && values.first != '' && values.last != ''?  <Register2/>
         :  null}
 
-      <Button onPress={handleSubmit} title="Submit" disabled={!isValid}> </Button>
+      <Button 
+      buttonStyle={styles.button}
+      onPress={handleSubmit} 
+      title="Register" 
+      disabled={!isValid}> </Button>
        
       </SafeAreaView>
     )}
@@ -94,6 +102,16 @@ const styles = StyleSheet.create({
     elevation: 10,
     backgroundColor: '#9BD1D1',
     //justifyContent: 'center',
+  },
+  button:{
+    backgroundColor: '#ff9f7f',
+    margin: 20,
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
   },
   textInput: {
     height: 40,

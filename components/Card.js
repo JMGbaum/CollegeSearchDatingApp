@@ -2,12 +2,14 @@ import { InfoCard } from "./InfoCard";
 import { ProfileCard } from "./ProfileCard";
 import React from "react";
 import { Dimensions, ScrollView, StyleSheet } from "react-native";
+import { Like_Button } from "./likebutton";
 
 export const Card = (props) => {
     return (
        <ScrollView style={{...styles.card}}>
          <ProfileCard title={props.title} location={props.location} image={props.image}/>
          <InfoCard data={props.data} />
+         <Like_Button/>
        </ScrollView>
     )
 }

@@ -1,29 +1,26 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
-import { Formik, Field, Form } from 'formik';
-
-//start time: 8:20-9:20, 9:00-9:33
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
+import { View, SafeAreaView, StyleSheet, Text} from 'react-native';
+import { Formik} from 'formik';
+import { Button } from 'react-native-elements';
 import { Checkbox } from './checkbox2';
 
 
 export const Q1 = (props) => {
   return (
-    <SafeAreaView >
+    <SafeAreaView>
       <Text style = {styles.title_text}> 2 or 4 year school</Text>
         <Formik
           initialValues={{
               two_year: false,
               four_year: false,
           }}
-          onSubmit={(values, { resetForm }) => {
+          onSubmit={(values) => {
               console.log(values);
+              props.navigate("Question 2");
           }}
       >
           {({
-              handleChange,
               handleSubmit,
               values,
               setFieldValue
@@ -43,7 +40,10 @@ export const Q1 = (props) => {
                   >
                       <Text  style = {styles.text}>4 year school</Text>
                   </Checkbox>
-                  {values.two_year != '' || values.four_year != ''?  <Button onPress={handleSubmit} title="Submit"></Button> :  null}
+                  <Button 
+                  buttonStyle={styles.button}
+                  onPress={handleSubmit} 
+                  title="Submit"></Button> 
                   
               </View>
           )}
@@ -60,6 +60,16 @@ const styles = StyleSheet.create({
     fontSize: 30,
     height: 50,
     alignItems: 'center',
+  },
+  button:{
+    backgroundColor: '#ff9f7f',
+    margin: 20,
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
   },
   text:{
     fontSize: 20,

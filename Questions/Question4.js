@@ -1,10 +1,8 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
-import { Formik, Field, Form } from 'formik';
-
-//start time: 8:20-9:20, 9:00-9:33
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+import { View, SafeAreaView, StyleSheet, Text} from 'react-native';
+import { Formik} from 'formik';
+import { Button } from 'react-native-elements/dist/buttons/Button';
 
 import { Checkbox } from './checkbox2';
 import {Special_interest} from './special_dd';
@@ -24,6 +22,7 @@ export const Q4 = (props) => {
           }}
           onSubmit={(values, { resetForm }) => {
               console.log(values);
+              props.navigate("Real App");
           }}
       >
           {({
@@ -52,7 +51,9 @@ export const Q4 = (props) => {
                   {values.Religious_interest != false?  <Religious/>:  null}
                 
                   
-                  <Button onPress={handleSubmit} title="Submit"></Button> 
+                  <Button 
+                  buttonStyle={styles.button}
+                  onPress={handleSubmit} title="Submit"></Button> 
               </View>
           )}
       </Formik>
@@ -68,6 +69,16 @@ const styles = StyleSheet.create({
     height: 30,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  button:{
+    backgroundColor: '#ff9f7f',
+    margin: 20,
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
   },
   text:{
     fontSize: 15,

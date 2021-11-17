@@ -1,8 +1,9 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, SafeAreaView, StyleSheet,Text} from 'react-native';
+import { TextInput, SafeAreaView, StyleSheet,Text} from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import { Button } from 'react-native-elements';
 
 const loginvalid = yup.object().shape({
   email: yup
@@ -19,7 +20,10 @@ export const Logs = props => (
   <Formik
     validationSchema={loginvalid}
     initialValues={{ email: '', password: '' }}
-    onSubmit={values => console.log(values)}
+    onSubmit={(values) => {
+      console.log(values);
+      props.navigate('Real App');
+  }}
   >
     {({ handleChange, handleBlur, handleSubmit, values, errors, isValid, logged}) => (
       <SafeAreaView style = {styles.loginContainer}>
@@ -45,9 +49,19 @@ export const Logs = props => (
         {errors.password &&
          <Text style={{ fontSize: 10, color: 'red' }}>{errors.password}</Text>
        }
+       <Button 
+       
+        type="clear"
+        title="Register"
+        color='black'
+        onPress={() =>
+          props.navigate('Register')
+        }
+      />
         <Button
+         buttonStyle={styles.button}
          onPress={handleSubmit}
-         title="Submit"
+         title="Log In"
          disabled={!isValid}
          submitted= {logged}
        />
@@ -64,16 +78,24 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 10,
     backgroundColor: '#9BD1D1',
-    //justifyContent: 'center',
   },
+  button:{
+    backgroundColor: '#ff9f7f',
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
+  },
+
+
   textInput: {
     height: 40,
     width: '80%',
     margin: 10,
     backgroundColor: 'white',
     borderColor: '#ff9f7f',
-    //justifyContent: 'center',
-    //borderWidth: StyleSheet.hairlineWidth,
     borderWidth: 1.5,
     borderRadius: 10,
   },

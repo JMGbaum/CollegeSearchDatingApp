@@ -1,11 +1,9 @@
 // Formik x React Native example
 import React from 'react';
-import { Button, TextInput, View, SafeAreaView, StyleSheet, Text} from 'react-native';
+import { View, SafeAreaView, StyleSheet, Text} from 'react-native';
 import { Formik, Field, Form } from 'formik';
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-
 import { Checkbox } from './checkbox2';
+import { Button } from 'react-native-elements/dist/buttons/Button';
 
 
 export const Q2 = (props) => {
@@ -20,6 +18,7 @@ export const Q2 = (props) => {
           }}
           onSubmit={(values, { resetForm }) => {
               console.log(values);
+              props.navigate("Question 3");
           }}
       >
           {({
@@ -50,8 +49,10 @@ export const Q2 = (props) => {
                   >
                        <Text style = {styles.text}> Greater than 15,000</Text> 
                   </Checkbox>
-                  {values.small != '' || values.medium != '' || values.large != ''? 
-                  <Button onPress={handleSubmit} title="Submit"></Button> :  null}
+                  <Button 
+                  buttonStyle={styles.button}
+                  onPress={handleSubmit} 
+                  title="Submit"></Button>
                   
               </View>
           )}
@@ -68,6 +69,16 @@ const styles = StyleSheet.create({
     fontSize: 25,
     height: 50,
     alignItems: 'center',
+  },
+  button:{
+    backgroundColor: '#ff9f7f',
+    margin: 20,
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
   },
   text:{
     fontSize: 15,

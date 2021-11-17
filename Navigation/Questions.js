@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { SafeAreaView, View, Button, StyleSheet,Dimensions, Text} from 'react-native';
+import {Button, SafeAreaView, View, StyleSheet,Dimensions, Text, Image} from 'react-native';
+//import { Button } from 'react-native-elements';
 
 
 import { Stack } from "../screens/Stack";
@@ -16,26 +17,16 @@ import {Q5} from "../Questions/Question5";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
+
 const QuestionStack = createNativeStackNavigator();
 <QuestionStack.Navigator screenOptions={{headerShown: false}}></QuestionStack.Navigator>
 
+
 const Welcomescreen = ({ navigation }) => {
   return(
-    <SafeAreaView style = {new_styles.stylize}>
-      <Button style = {new_styles.button}
-        title="Login" 
-        color='black'
-        onPress={() =>
-          navigation.navigate('Login')
-        }
-      />
-      <Button 
-        title="Register"
-        color='black'
-        onPress={() =>
-          navigation.navigate('Register')
-        }
-      />
+    <SafeAreaView style = {new_styles.welcome}>
+      <Image style={new_styles.image} source={require('../assets/Logo.jpg')}></Image>
+      <Logs navigate={navigation.navigate}/>
     </SafeAreaView>
   )
 }
@@ -43,14 +34,8 @@ const Welcomescreen = ({ navigation }) => {
 const Login = ({ navigation, props }) => {
   return (
     <SafeAreaView style = {new_styles.stylize}>
-      <Logs />
-      <Button
-        title="Log in"
-        color='black'
-        onPress={() =>
-          navigation.navigate('Real App')
-        }
-      />
+      <Logs navigate={navigation.navigate}/>
+      
     </SafeAreaView>
     
   );
@@ -59,46 +44,28 @@ const Login = ({ navigation, props }) => {
 const Register = ({ navigation }) => {
   return (
     <SafeAreaView style = {new_styles.stylize}>
-      <Register_Screen/>
-      <Button 
-        title="Go to Questionaire"
-        color='black'
-        onPress={() =>
-          navigation.navigate('Question 1')
-        }
-      />
+      <Register_Screen navigate={navigation.navigate}/>
     </SafeAreaView>
     
   );
 };
 
-
-const Question1Screen = ({ navigation }) => {
+//<Q1 navigate={navigation.navigate}/>
+const Question1Screen = ({ navigation}) => {
   return (
     <SafeAreaView style = {new_styles.checkboxes}>
-      <Q1/>
-      <Button 
-        title="Go to Question 2"
-        color='black'
-        onPress={() =>
-          navigation.navigate('Question 2')
-        }
-      />
+      <Q1 navigate={navigation.navigate}/> 
+      
     </SafeAreaView>
     
   );
 };
+
+
 const Question2Screen = ({navigation}) => {
   return(
     <SafeAreaView style = {new_styles.checkboxes}>
-      <Q2/>
-      <Button
-        title="Go to Question 3"
-        color ='black'
-        onPress={() =>
-          navigation.navigate('Question 3')
-        }
-      />
+      <Q2 navigate={navigation.navigate}/>
     </SafeAreaView>
 
   );
@@ -107,14 +74,7 @@ const Question2Screen = ({navigation}) => {
 const Question3Screen = ({navigation}) => {
   return(
     <SafeAreaView style = {new_styles.checkboxes}>
-      <Q3/>
-      <Button
-        title="Go to Question 4"
-        color='black'
-        onPress={() =>
-          navigation.navigate('Question 4')
-        }
-      />
+      <Q3 navigate={navigation.navigate}/>
     </SafeAreaView>
 
   );
@@ -123,35 +83,21 @@ const Question3Screen = ({navigation}) => {
 const Question4Screen = ({navigation}) => {
   return(
     <SafeAreaView style = {new_styles.drop_down}> 
-      <Q4/>
-      <Button
-        title="Go to Question 5"
-        color='black'
-        onPress={() =>
-          navigation.navigate('Question 5')
-        }
-      />
+      <Q4 navigate={navigation.navigate}/>
     </SafeAreaView>
 
   );
 };
-
+/*
 const Question5Screen = ({navigation}) => {
   return(
     <SafeAreaView style = {new_styles.checkboxes}>
-      <Q5/>
-      <Button 
-        title="Done"
-        color='black'
-        onPress={() =>
-          navigation.navigate('Login')
-        }
-      />
+      <Q5 navigate={navigation.navigate}/>
     </SafeAreaView>
 
   );
 };
-
+*/
 const RealApp = ({navigation}) => {
   return(
     <View style={{flex:1, backgroundColor:"#000000"}}>
@@ -165,6 +111,12 @@ const RealApp = ({navigation}) => {
               title="Settings"
               onPress={() =>
                 navigation.navigate('Settings')
+              }
+          />
+          <Button 
+              title="Stack"
+              onPress={() =>
+                navigation.navigate('Real App')
               }
           />
           <Button title="Likes"
@@ -184,6 +136,12 @@ const Settings = ({navigation}) => {
     <SafeAreaView>
       <Settings_Screen/>
       <View style={new_styles.other_navbar}>
+        <Button 
+              title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }
+          />
           <Button 
               title="Stack"
               onPress={() =>
@@ -207,15 +165,21 @@ const Likes = ({navigation}) => {
     <SafeAreaView>
       <Text style = {new_styles.title_text}> Welcome to your likes!</Text>
       <View style={new_styles.other_navbar}>
+        <Button 
+              title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }
+          />
           <Button 
               title="Stack"
               onPress={() =>
                 navigation.navigate('Real App')
               }
           />
-          <Button title="Settings"
+          <Button title="Likes"
               onPress={() =>
-                navigation.navigate('Settings')
+                navigation.navigate('Likes')
               }></Button>
           
       </View>
@@ -242,7 +206,7 @@ export function Question() {
         <QuestionStack.Screen name="Question 2" component={Question2Screen} />
         <QuestionStack.Screen name="Question 3" component={Question3Screen} />
         <QuestionStack.Screen name="Question 4" component={Question4Screen} />
-        <QuestionStack.Screen name="Question 5" component={Question5Screen} />
+       
 
         <QuestionStack.Screen name="Settings" component={Settings}
         options={{ headerBackVisible: false}}/>
@@ -255,14 +219,41 @@ export function Question() {
     </NavigationContainer>
   );
 }
-
+// <QuestionStack.Screen name="Question 5" component={Question5Screen} />
 export default Question;
 
 const new_styles = StyleSheet.create({
+  image: {
+    width: 300,
+    height: 300,
+    margin: 20,
+    borderColor: 'black',
+    borderWidth: 1,
+  
+    
+  },
   text:{
     fontSize: 20,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+
+  button:{
+    backgroundColor: '#ff9f7f',
+    padding: 10,
+    alignItems: 'center',
+    flexDirection: "row",
+    borderColor: 'black',
+    borderWidth: 1,
+    borderRadius: 350,
+  },
+
+  welcome: {
+    flex: 1, //flexible
+    backgroundColor: '#9BD1D1',
+    //justifyContent: 'center',
+    alignItems: 'center',
+    
   },
 
   stylize: {

@@ -56,7 +56,7 @@ const Login = ({ navigation, props }) => {
   );
 };
 
-const Register = ({ navigation }) => {
+const Register = ({ navigation}) => {
   return (
     <SafeAreaView style = {new_styles.stylize}>
       <Register_Screen/>
@@ -73,14 +73,14 @@ const Register = ({ navigation }) => {
 };
 
 
-const Question1Screen = ({ navigation }) => {
+const Question1Screen = ({ navigation, handleSubmit }) => {
   return (
     <SafeAreaView style = {new_styles.checkboxes}>
       <Q1/>
       <Button 
         title="Go to Question 2"
         color='black'
-        onPress={() =>
+        onPress={(handleSubmit) =>
           navigation.navigate('Question 2')
         }
       />
@@ -167,6 +167,12 @@ const RealApp = ({navigation}) => {
                 navigation.navigate('Settings')
               }
           />
+          <Button 
+              title="Stack"
+              onPress={() =>
+                navigation.navigate('Real App')
+              }
+          />
           <Button title="Likes"
               onPress={() =>
                 navigation.navigate('Likes')
@@ -179,11 +185,18 @@ const RealApp = ({navigation}) => {
   );
 };
 
+
 const Settings = ({navigation}) => {
   return(
     <SafeAreaView>
       <Settings_Screen/>
       <View style={new_styles.other_navbar}>
+        <Button 
+                title="Settings"
+                onPress={() =>
+                  navigation.navigate('Settings')
+                }
+            />
           <Button 
               title="Stack"
               onPress={() =>
@@ -207,23 +220,28 @@ const Likes = ({navigation}) => {
     <SafeAreaView>
       <Text style = {new_styles.title_text}> Welcome to your likes!</Text>
       <View style={new_styles.other_navbar}>
+        <Button title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }></Button>
           <Button 
               title="Stack"
               onPress={() =>
                 navigation.navigate('Real App')
               }
           />
-          <Button title="Settings"
-              onPress={() =>
-                navigation.navigate('Settings')
-              }></Button>
           
+          <Button title="Likes"
+              onPress={() =>
+                navigation.navigate('Likes')
+              }></Button>
       </View>
 
     </SafeAreaView>
     
   );
 };
+
 export function Question() {
   return (
     <NavigationContainer>

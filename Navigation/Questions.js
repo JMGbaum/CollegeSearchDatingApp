@@ -12,7 +12,6 @@ import {Q1} from "../Questions/Question1";
 import {Q2} from "../Questions/Question2";
 import {Q3} from "../Questions/Question3";
 import {Q4} from "../Questions/Question4";
-import {Q5} from "../Questions/Question5";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -87,16 +86,7 @@ const Question4Screen = ({navigation}) => {
 
   );
 };
-/*
-const Question5Screen = ({navigation}) => {
-  return(
-    <SafeAreaView style = {new_styles.checkboxes}>
-      <Q5 navigate={navigation.navigate}/>
-    </SafeAreaView>
 
-  );
-};
-*/
 const RealApp = ({navigation}) => {
   return(
     <View style={{flex:1, backgroundColor:"#000000"}}>

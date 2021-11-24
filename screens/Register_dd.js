@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { SafeAreaView, Text, StyleSheet} from 'react-native';
 //import { styles } from '../Styles';
 
-export function Register2(){
+export function Register2(props){
       const [open, setOpen] = useState(false);
       const [value, setValue] = useState(null);
       const [items, setItems] = useState([
@@ -23,6 +23,9 @@ export function Register2(){
                 setValue={setValue}
                 setItems={setItems}
                 multiple={false}
+                onChangeValue={()=>{
+                  props.setFieldValue(props.name, value);
+                }}
             />
         </SafeAreaView>
       );

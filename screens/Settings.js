@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { SafeAreaView, FlatList, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, StyleSheet, Text, ScrollView, LogBox } from 'react-native';
 import { Formik } from 'formik';
 import { Button } from 'react-native-elements/dist/buttons/Button';
 import { Checkbox } from '../Questions/checkbox2';
@@ -12,6 +12,11 @@ const fs = require("expo-file-system");
 export const Settings_Screen = (props) => {
   const [data, setData] = useState(null);
   const componentIsMounted = useRef(true);
+
+  // ignore nested list warning because it works as expected
+  useEffect(() => {
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
+  }, [])
 
   useEffect(() => {
     return () => {
@@ -75,8 +80,7 @@ export const Settings_Screen = (props) => {
           values,
           setFieldValue
         }) => (
-          <FlatList ListHeaderComponent={
-            <>
+          <ScrollView>
               <Checkbox
                 name={"two_year"}
                 isChecked={values?.two_year}
@@ -165,8 +169,7 @@ export const Settings_Screen = (props) => {
                 buttonStyle={styles.button}
                 onPress={handleSubmit} title="Submit"  
               />
-            </>
-          } />
+          </ScrollView>
         )}
 
       </Formik>

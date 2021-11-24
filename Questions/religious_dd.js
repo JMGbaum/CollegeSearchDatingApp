@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet} from 'react-native';
 
 export function Religious(props){
       const [open, setOpen] = useState(false);
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState(props.initialValues ? props.initialValues : null);
       const [items, setItems] = useState([
         {label: 'American Evangelical Lutheran Church', value: 'AELC'},
         {label: 'African Methodist Episcopal Zion Church', value: 'AMEZC'},

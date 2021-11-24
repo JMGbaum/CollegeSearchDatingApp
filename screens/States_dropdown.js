@@ -4,7 +4,7 @@ import { SafeAreaView, Text, StyleSheet} from 'react-native';
 
 export function Fifty_states(props){
       const [open, setOpen] = useState(false);
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState(props.initialValues ? props.initialValues : null);
       const [items, setItems] = useState([
         {label: 'Alabama', value: 'AL'},
         {label: 'Alaska', value: 'AK'},

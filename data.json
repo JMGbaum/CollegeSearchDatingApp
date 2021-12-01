@@ -5,7 +5,8 @@
         "first_name": "",
         "last_name": "",
         "email": "",
-        "password": ""
+        "password": "",
+        "class_year": ""
     },
     "preferences": {
         "program_length": {
@@ -26,8 +27,8 @@
         "interests": {
             "special": [],
             "religious": []
-        },
-        "program": false
+        }
     },
-    "likes": []
+    "likes": [],
+    "dislikes": []
 }

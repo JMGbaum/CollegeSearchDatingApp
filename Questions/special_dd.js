@@ -4,7 +4,7 @@ import { SafeAreaView, StyleSheet} from 'react-native';
 
 export function Special_interest(props){
       const [open, setOpen] = useState(false);
-      const [value, setValue] = useState(null);
+      const [value, setValue] = useState(props.initialValues ? props.initialValues : null);
       const [items, setItems] = useState([
         {label: 'Historically Black Insitution', value: 'HBCU'},
         {label: 'Predominantly Black Institution', value: 'PBI'},

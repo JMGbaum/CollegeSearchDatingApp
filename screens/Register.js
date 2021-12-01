@@ -6,6 +6,8 @@ import {Register2} from './Register_dd';
 import * as yup from 'yup'
 import { Button } from 'react-native-elements';
 
+const fs = require("expo-file-system");
+
 const loginvalid = yup.object().shape({
     email: yup
         .string()
@@ -27,14 +29,19 @@ const loginvalid = yup.object().shape({
 export const Register_Screen = (props) => (
   <Formik
     validationSchema={loginvalid}
-    initialValues={{ first: '', last: '', email: '', password: '' }}
+    initialValues={{ first: '', last: '', email: '', password: '', class_year: '' }}
     onSubmit={(values) => {
+      fs.readAsStringAsync(fs.documentDirectory + "data.json").then(data => {
+        const local_data = JSON.parse(data);
+        local_data.account = values;
+        fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
+      });
       console.log(values);
       props.navigate('Question 1');
   }}
   >
     
-    {({ handleChange, handleBlur, handleSubmit, errors, isValid, values }) => (
+    {({ handleChange, handleBlur, handleSubmit, errors, isValid, values, setFieldValue }) => (
       <SafeAreaView style = {styles.loginContainer}>
         <TextInput style = {styles.textInput}
           name="first"
@@ -79,7 +86,7 @@ export const Register_Screen = (props) => (
                   <Text style={styles.errorText}>{errors.password}</Text>
                 }
         
-       {values.email != '' && values.password != '' && values.first != '' && values.last != ''?  <Register2/>
+       {values.email != '' && values.password != '' && values.first != '' && values.last != ''?  <Register2 name="class_year" setFieldValue={setFieldValue}/>
         :  null}
 
       <Button 

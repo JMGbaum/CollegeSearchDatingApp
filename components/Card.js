@@ -10,8 +10,8 @@ export const Card = (props) => {
        <ScrollView style={{...styles.card}}>
          <ProfileCard title={props.title} location={props.location} image={props.image}/>
          <InfoCard data={props.data} />
-         <Like_Button/>
-         <Dislike_Button/>
+         <Like_Button data={props.data}/>
+         <Dislike_Button data={props.data}/>
        </ScrollView>
     )
 }

@@ -9,6 +9,7 @@ export const Card = (props) => {
     return (
        <ScrollView style={{...styles.card}}>
          <ProfileCard title={props.title} location={props.location} image={props.image}/>
+   matcheduapi
          <InfoCard 
          data={props.data} 
          admission_rate={props.admission_rate}
@@ -44,8 +45,11 @@ export const Card = (props) => {
          
 
          />
-         <Like_Button/>
-         <Dislike_Button/>
+        
+         <InfoCard data={props.data} />
+         <Like_Button data={props.data}/>
+         <Dislike_Button data={props.data}/>
+       main
        </ScrollView>
     )
 }

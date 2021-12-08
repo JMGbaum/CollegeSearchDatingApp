@@ -233,25 +233,3 @@ export const Stack = () => {
        </View>
     )
 }
-
-const pieChartData = {
-  title: "Student Body Gender Disparity",
-  data:[
-    {
-      name:"Male",
-      value:40,
-      color:"#8ce0ed"
-    },
-    {
-      name:"Female",
-      value:50,
-      color:"#ffd1fb"
-    },
-    {
-      name:"Other",
-      value:10,
-      color:"#bdffbd"
-    },
-  ]
-}
-

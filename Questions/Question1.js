@@ -22,7 +22,6 @@ export const Q1 = (props) => {
                   local_data.preferences.program_length = values;
                   fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
               });
-              console.log(values);
               props.navigate("Question 2");
           }}
       >

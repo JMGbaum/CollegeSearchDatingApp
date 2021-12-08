@@ -8,6 +8,9 @@ export const InfoBlock = (props) => {
         <PieChart
           backgroundColor="transparent"
           data={props.data}
+          height={props.height}
+          legend={props.legend}
+          center={props.center ? props.center : 0}
         />
       </View>
     )

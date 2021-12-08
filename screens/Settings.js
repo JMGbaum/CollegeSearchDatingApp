@@ -72,7 +72,6 @@ export const Settings_Screen = (props) => {
             local_data.preferences.interests.religious = values.religious;
             fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
           });
-          console.log(values);
         }}
       >
         {({

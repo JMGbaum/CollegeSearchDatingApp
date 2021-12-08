@@ -21,7 +21,6 @@ export const Logs = props => (
     validationSchema={loginvalid}
     initialValues={{ email: '', password: '' }}
     onSubmit={(values) => {
-      console.log(values);
       props.navigate('Real App');
   }}
   >

@@ -25,7 +25,6 @@ export const Q2 = (props) => {
               local_data.preferences.student_body_size = values;
               fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
             });
-            console.log(values);
 
           }}
       >

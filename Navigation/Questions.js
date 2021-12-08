@@ -12,9 +12,11 @@ import {Q1} from "../Questions/Question1";
 import {Q2} from "../Questions/Question2";
 import {Q3} from "../Questions/Question3";
 import {Q4} from "../Questions/Question4";
+import {Home} from '../components/Home';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 
 
 const QuestionStack = createNativeStackNavigator();
@@ -96,6 +98,10 @@ const RealApp = ({navigation}) => {
           <StatusBar style="auto" />
         </View>
         <View style={new_styles.navbar}>
+          <Button title = 'Search'
+            onPress={() =>
+            navigation.navigate('Search')
+          }/>
           <Button 
               title="Settings"
               onPress={() =>
@@ -126,6 +132,10 @@ const Settings = ({navigation}) => {
     <SafeAreaView>
       <Settings_Screen/>
       <View style={new_styles.other_navbar}>
+        <Button title = 'Search'
+            onPress={() =>
+            navigation.navigate('Search')
+          }/>
         <Button 
                 title="Settings"
                 onPress={() =>
@@ -150,11 +160,17 @@ const Settings = ({navigation}) => {
   );
 };
 
+
+
 const Likes = ({navigation}) => {
   return(
     <SafeAreaView>
       <Text style = {new_styles.title_text}> Welcome to your likes!</Text>
       <View style={new_styles.other_navbar}>
+        <Button title = 'Search'
+            onPress={() =>
+            navigation.navigate('Search')
+          }/>
         <Button title="Settings"
               onPress={() =>
                 navigation.navigate('Settings')
@@ -175,6 +191,35 @@ const Likes = ({navigation}) => {
     
   );
 };
+
+const SearchBar = ({navigation}) => {
+  return(
+    <SafeAreaView>
+      <Home/>
+      <View style={new_styles.other_navbar}>
+        <Button title = 'Search'
+            onPress={() =>
+            navigation.navigate('Search')
+          }/>
+        <Button title="Settings"
+              onPress={() =>
+                navigation.navigate('Settings')
+              }></Button>
+          <Button 
+              title="Stack"
+              onPress={() =>
+                navigation.navigate('Real App')
+              }
+          />
+          <Button title="Likes"
+              onPress={() =>
+                navigation.navigate('Likes')
+              }></Button>
+      </View>
+    </SafeAreaView>
+  )
+}
+
 
 export function Question() {
   return (
@@ -199,6 +244,8 @@ export function Question() {
         <QuestionStack.Screen name="Settings" component={Settings}
         options={{ headerBackVisible: false}}/>
         <QuestionStack.Screen name="Likes" component={Likes}
+        options={{ headerBackVisible: false}}/>
+        <QuestionStack.Screen name="Search" component={SearchBar}
         options={{ headerBackVisible: false}}/>
         
         
@@ -297,8 +344,5 @@ const new_styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
-
-
-  
 });
 

@@ -36,7 +36,6 @@ export const Register_Screen = (props) => (
         local_data.account = values;
         fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
       });
-      console.log(values);
       props.navigate('Question 1');
   }}
   >

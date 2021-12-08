@@ -32,8 +32,6 @@ export const Q3 = (props) => {
                 local_data.preferences.location.specific = values.state;
                 fs.writeAsStringAsync(fs.documentDirectory + "data.json", JSON.stringify(local_data));
             });
-            
-            console.log(values);
           }}
       >
           {({

@@ -9,11 +9,11 @@ export const Card = (props) => {
     return (
        <ScrollView style={{...styles.card}}>
          <ProfileCard title={props.title} location={props.location} image={props.image}/>
-   matcheduapi
          <InfoCard 
-         data={props.data} 
+         data={props.data}
+         racedata={props.racedata}
          admission_rate={props.admission_rate}
-         admission_sat_scores={props.admission_sat_scores}
+         admission_sat_scores={props.satscores}
          //admission_completion_rate_4yr_150nt={props.admission_completion_rate-4yr_150nt}
          //admission_completion_rate_less_than_4yr_150nt={props.admission_completion_rate_less_than_4yr_150nt}
          cost={props.cost}
@@ -29,11 +29,11 @@ export const Card = (props) => {
          asianr={props.asianr}
          asianpacificr ={props.asianpacificr}
          blackr={props.blackr}
-         blacknonhispanic={props.blacknoonhispanic}
+         blacknonhispanic={props.blacknonhispanicr}
          hispanicr={props.hispanicr}
          nhpir={props.nhpir}
          nnonresidentr={props.nonresidentr}
-         twormore={props.twormore}
+         twormore={props.twormorer}
          unknownr={props.unknownr}
          whiter={props.whiter}
          whitenonhispanicr={props.whitenonhispanicr}
@@ -45,11 +45,8 @@ export const Card = (props) => {
          
 
          />
-        
-         <InfoCard data={props.data} />
          <Like_Button data={props.data}/>
          <Dislike_Button data={props.data}/>
-       main
        </ScrollView>
     )
 }

@@ -8,7 +8,8 @@ const chartConfig = {
   backgroundGradientFromOpacity: 0,
   backgroundGradientTo: "#08130D",
   backgroundGradientToOpacity: 0.5,*/
-  color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+  decimalPlaces: 2,
+  color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
   strokeWidth: 2, // optional, default 3
   //arPercentage: 0.5,
   useShadowColorFromDataset: false // optional
@@ -29,14 +30,12 @@ export const PieChart = (props) => {
           accessor={"value"}
           backgroundColor={props.backgroundColor ? props.backgroundColor : "#ffffff"}
           style={{margin: "auto"}}
-          chartConfig={{
-            backgroundColor: '#ffffff',
-            backgroundGradientFrom: '#ffffff',
-            backgroundGradientTo: '#ffffff',
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`
-          }}
-          height={100}
+          chartConfig={chartConfig}
+          height={props.height}
           width={Dimensions.get("screen").width*0.6}
+          hasLegend={props.legend}
+          center={props.center ? props.center : [0, 0]}
+
           />
       </View>
     )

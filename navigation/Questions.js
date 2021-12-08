@@ -344,8 +344,5 @@ const new_styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
   },
-
-
-  
 });
 

@@ -19,6 +19,7 @@ export const Dislike_Button= (props) => {
          <Pressable onPress={() => {
               setLiked((isLiked) => !isLiked);
               if (props.data) onPress(props.data);
+              props.press();
             }}>
             <MaterialCommunityIcons style = {styles.like_button}
                     name={liked ? "close" : "close"}

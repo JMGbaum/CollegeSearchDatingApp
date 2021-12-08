@@ -10,7 +10,7 @@ export const Legend = (props) => {
             props.data["data"].map(obj => {
             
                 return (
-                    <View style={{flexDirection: 'row'}}>
+                    <View style={{flexDirection: 'row'}} key={obj.name}>
                         <Icon name="circle" color={obj.color}/>
                         <Text>{(obj.value/sum * 100).toFixed(2) + "% " + obj.name}</Text>
                     </View>

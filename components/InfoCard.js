@@ -1,6 +1,6 @@
 import { InfoBlock } from "./InfoBlock.js";
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, ShadowPropTypesIOS } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Legend } from "./Legend.js";
 
@@ -13,26 +13,20 @@ export const InfoCard = (props) => {
             <InfoBlock data={props.racedata} height={200} legend={false} center={[75,0]}/>
             <Legend data={props.racedata}/>
           </View>
-          <Text>{"Admission Rate: " + props.admission_rate*100 + "%"}</Text>
-          <Text>{"Average SAT Score: " + props.admission_sat_scores}</Text>
+          { props.admission_rate ? <Text>{"Admission Rate: " + props.admission_rate*100 + "%"}</Text> : null }
+          { props.admission_sat_scores ? <Text>{"Average SAT Score: " + props.admission_sat_scores}</Text> : null }
          
-          <Text>{"Cost: " + props.cost}</Text>
+          { props.cost ? <Text>{"Cost: " + props.cost}</Text> : null }
           
-          <Text>{"Historically Black: " + !!props.historicallyblack}</Text>
+          { props.historicallyblack ? <Text>{"Historically Black: " + !!props.historicallyblack}</Text> : null }
           
-          {/*<Text>{"Ownership: " + props.owner}</Text>*/}
-          <Text>{"Religious Affiliation: " + props.religion}</Text>
+          {/*props.owner ? <Text>{"Ownership: " + props.owner}</Text> : null*/}
+          { props.religion ? <Text>{"Religious Affiliation: " + props.religion}</Text> : null }
 
-          <Text>{"Grad Students: " + props.gradstudent}</Text>
-          <Text>{"Student Body Size: " + props.studentsize}</Text>
-          <Text>{"Degrees Awarded: " + props.degreesawarded}</Text>
+          { props.gradstudent ? <Text>{"Grad Students: " + props.gradstudent}</Text> : null }
+          { props.studentsize ? <Text>{"Student Body Size: " + props.studentsize}</Text> : null }
+          { props.degreesawarded ? <Text>{"Degrees Awarded: " + props.degreesawarded}</Text> : null }
           
-
-
-
-
-
-
         </LinearGradient>
       </View>
     )

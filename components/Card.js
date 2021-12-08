@@ -4,6 +4,7 @@ import React from "react";
 import { Dimensions, ScrollView, StyleSheet } from "react-native";
 import {Like_Button} from "./likebutton";
 import { Dislike_Button } from "./dislikebutton";
+import { useLinkProps } from "@react-navigation/native";
 
 export const Card = (props) => {
     return (
@@ -45,8 +46,8 @@ export const Card = (props) => {
          
 
          />
-         <Like_Button data={props.data}/>
-         <Dislike_Button data={props.data}/>
+         <Like_Button data={props.data} press={props.press}/>
+         <Dislike_Button data={props.data} press={props.press}/>
        </ScrollView>
     )
 }
